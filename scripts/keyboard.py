@@ -59,7 +59,7 @@ if __name__ == "__main__":
     rospy.init_node('teleop_twist_keyboard')
     """ ROS Parameters
     """
-    vel_pub = rospy.Publisher('key_vel', Twist, queue_size=10)
+    vel_pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
 
     x = 0
     th = 0

@@ -14,8 +14,8 @@ from nav_msgs.msg import Odometry
 
 class IteshuRobot():
     def __init__(self):
-        self.R=0.1   #Wheel radius [m]
-        self.L=0.4   #Distance between the wheels [m]
+        self.R=0.052   #Wheel radius [m]
+        self.L=0.264   #Distance between the wheels [m]
         
 
 class IteshuDriver():
@@ -90,8 +90,8 @@ class IteshuDriver():
         self.wr=(2*v+self.robot.L*w)/(2*self.robot.R) #right wheel speed (rad/sec)
         print "wl= ", self.wl
         print "wl= ", self.wr
-        self.setpoint.data[0]= self.wl
-        self.setpoint.data[1]= self.wr
+        self.setpoint.data[0]= self.wr
+        self.setpoint.data[1]= self.wl
         self.pub_f.publish(self.setpoint)
         
     
