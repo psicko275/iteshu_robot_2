@@ -2,6 +2,6 @@
 <launch>
     <param name="/use_sim_time" value="false"/>
     <node pkg="iteshu_robot_2" type="keyboard.py" name="keyboard"/>
-    <node pkg="iteshu_robot_2" type="iteshu_driver_translator.py" name="driver_translator"/>
+    
     <node pkg="rviz" type="rviz" name="rviz"/>
 </launch>

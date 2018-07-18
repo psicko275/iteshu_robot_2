@@ -2,6 +2,7 @@
 <launch>
     <param name="/use_sim_time" value="false"/>
     <node pkg="rosserial_python" type="serial_node.py" name="rosserial" args="/dev/ttyACM1" output="screen"/>
+    <node pkg="iteshu_robot_2" type="iteshu_driver_translator.py" name="driver_translator"/>
     <include file="$(find iteshu_robot_2)/launch/start_hokuyo.launch"/>
     <include file="$(find iteshu_robot_2)/launch/start_hector_slam.launch"/>
 </launch>
