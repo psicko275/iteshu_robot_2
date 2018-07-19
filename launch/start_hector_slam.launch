@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
 
 <launch>
-<node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0 0 0.25 0 0 0 base_link laser 50" />
+
+<node pkg="tf" type="static_transform_publisher" name="base_to_laser" args="0 0 0.25 0 0 0 base_link base_laser_link 50" />
 <node pkg="tf" type="static_transform_publisher" name="world_to_map" args="0 0 0 0 0 0 world map 50" />
+
   <arg name="geotiff_map_file_path" default="$(find hector_geotiff)/maps"/>
 
   
@@ -37,7 +39,7 @@
     <param name="advertise_map_service" value="true"/>
     
     <param name="scan_subscriber_queue_size" value="5"/>
-    <param name="scan_topic" value="scan"/>
+    <param name="scan_topic" value="base_scan"/>
     
     <!-- Debug parameters -->
     <!--
