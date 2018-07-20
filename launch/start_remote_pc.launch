@@ -1,7 +1,7 @@
 <!-- Starts rviz, keyboard and driver translator -->
 <launch>
     <param name="/use_sim_time" value="false"/>
-    <node pkg="iteshu_robot_2" type="keyboard.py" name="keyboard"/>
+    <node pkg="iteshu_robot_2" type="keyboard.py" name="keyboard" output="screen"/>
     
     <node pkg="rviz" type="rviz" name="rviz"/>
 </launch>
