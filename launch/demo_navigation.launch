@@ -2,7 +2,7 @@
 <!-- Before launching this file please launch the start_raspberry.launch-->
 <launch>
     <param name="/use_sim_time" value="false"/>
-    <node pkg="tf" type="static_transform_publisher" name="base2odom" args="0 0 0 0 0 0 base_link odom 50" />
+    <!--node pkg="tf" type="static_transform_publisher" name="base2odom" args="0 0 0 0 0 0 base_link odom 50" /-->
     <rosparam file="$(find iteshu_robot_2)/param/ros.yaml"/>
 
 	<!-- Start the Operator to control the simulated robot -->
