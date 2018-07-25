@@ -5,10 +5,10 @@
     <!-- Default parameters: {angle_max: 2.0923497946760143, angle_min: -2.356194490192345, cluster: 1, frame_id: laser,
   skip: 0, tf_prefix: '', time_offset: 0.0}
  -->
-    <!--param name="angle_max" value=""/>
-    <param name="frame_id" value="laser"/-->
     <remap from="scan" to="base_scan"/>
     <param name="frame_id" value="base_laser_link"/>
+    <param name="port" type="string" value="/dev/ttyACM1990"/>
+    <!--param name="tf_prefix" value=""/-->
 
 </node>
 
