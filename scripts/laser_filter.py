@@ -34,6 +34,14 @@ class LaserFilter():
 
     def scan_cb(self, msg):
         self.scan_msg = LaserScan()
+        self.scan_msg.header = msg.header
+        self.scan_msg.angle_min = msg.angle_min
+        self.scan_msg.angle_max = msg.angle_max
+        self.scan_msg.angle_increment = msg.angle_increment
+        self.scan_msg.time_increment = msg.time_increment
+        self.scan_msg.scan_time = msg.scan_time
+        self.scan_msg.range_min = msg.range_min
+        self.scan_msg.range_max = msg.range_max
         for element in msg.ranges:
             if element == float('Inf'):
                 self.scan_msg.ranges.append(self.max_limit)
