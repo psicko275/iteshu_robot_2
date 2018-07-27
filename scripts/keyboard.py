@@ -6,6 +6,7 @@ from std_msgs.msg import String
 from copy import deepcopy
 from visualization_msgs.msg._Marker import Marker
 from visualization_msgs.msg._MarkerArray import MarkerArray
+from nav2d_operator.msg import cmd
 import tf
 import sys, select, termios, tty
 
@@ -59,7 +60,8 @@ if __name__ == "__main__":
     rospy.init_node('teleop_twist_keyboard')
     """ ROS Parameters
     """
-    vel_pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
+    vel_pub = rospy.Publisher('key_vel', Twist, queue_size=10)
+    nav2d_cmd_pub = rospy.Publisher('cmd', cmd, queue_size=10)
 
     x = 0
     th = 0
@@ -68,14 +70,17 @@ if __name__ == "__main__":
         print msg
         print vels(speed, turn)
         key_vel = Twist()
+        nav2d_cmd = cmd()
         while(1):
             key = getKey()
             if key in moveBindings.keys():
                 x = moveBindings[key][0]
                 th = moveBindings[key][1]
-                key_vel.linear.x = x * speed; key_vel.linear.y = 0; key_vel.linear.z = 0
+                key_vel.linear.x = 3 * x * speed; key_vel.linear.y = 0; key_vel.linear.z = 0
                 key_vel.angular.x = 0; key_vel.angular.y = 0; key_vel.angular.z = th * turn
+                nav2d_cmd.Velocity=key_vel.linear.x; nav2d_cmd.Turn = key_vel.angular.z
                 vel_pub.publish(key_vel)
+                nav2d_cmd_pub.publish(nav2d_cmd)
                 print key_vel
                 
             elif key in speedBindings.keys():
@@ -103,6 +108,9 @@ if __name__ == "__main__":
        
         key_vel.linear.x = 0; key_vel.linear.y = 0; key_vel.linear.z = 0
         key_vel.angular.x = 0; key_vel.angular.y = 0; key_vel.angular.z = 0
+        nav2d_cmd.Velocity=key_vel.linear.x; nav2d_cmd.Turn = key_vel.angular.z
         vel_pub.publish(key_vel)
+        nav2d_cmd_pub.publish(nav2d_cmd)
+
         print key_vel
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
