@@ -17,5 +17,8 @@
             
 	<!-- RVIZ to view the visualization -->
 	<node name="RVIZ" pkg="rviz" type="rviz" args=" -d $(find iteshu_robot_2)/param/demo_navigation.rviz" /> 
+    <node name="keyboard" pkg="iteshu_robot_2" type="keyboard.py" output="screen"/>
+    <node name="saveData" pkg="iteshu_robot_2" type="saveData.py"/>
+    
 
 </launch>
