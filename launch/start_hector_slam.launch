@@ -42,7 +42,9 @@
     <param name="advertise_map_service" value="true"/>
     
     <param name="scan_subscriber_queue_size" value="5"/>
-    <param name="scan_topic" value="base_scan"/>
+    <!-- hector slam should not use the filtered laser data because it will consider it as obstacles
+	That's why here we will be using the scan topic (not filtered) -->
+    <param name="scan_topic" value="scan"/>
     
     <!-- Debug parameters -->
     <!--
