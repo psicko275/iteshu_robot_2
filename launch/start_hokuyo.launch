@@ -1,17 +1,18 @@
 <!-- This launch file starts the hokuyo with the required configuration parameters-->
 
 <launch>
-<node pkg="urg_node" type="urg_node" name="urg_node">
+<node pkg="hokuyo_node" type="hokuyo_node" name="hokuyo_node">
     <!-- Default parameters: {angle_max: 2.0923497946760143, angle_min: -2.356194490192345, cluster: 1, frame_id: laser,
   skip: 0, tf_prefix: '', time_offset: 0.0}
  -->
-    <remap from="scan" to="base_scan"/>
+    <!--remap from="scan" to="base_scan"/-->
     <param name="frame_id" value="base_laser_link"/>
-    <param name="port" type="string" value="/dev/ttyACM1990"/>
+    <param name="port" type="string" value="/dev/ttyACM0"/>
     <!--param name="tf_prefix" value=""/-->
 
 </node>
 
+<node pkg="iteshu_robot_2" type="laser_filter.py" name="laser_filter"/>
 <!--node pkg="rviz" type="rviz" name="rviz_hokuyo" args="-d $(find hokuyo)/config/rviz/start_hokuyo.rviz"/-->
     
 
