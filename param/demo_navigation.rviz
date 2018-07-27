@@ -6,9 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /TF1/Frames1
-        - /Costmap1
-        - /Route1
-        - /Desired1
+        - /Map1/Status1
       Splitter Ratio: 0.557143
     Tree Height: 459
   - Class: rviz/Selection
@@ -106,6 +104,15 @@ Visualization Manager:
       Enabled: true
       Name: Desired
       Topic: /Operator/desired
+      Value: true
+    - Alpha: 0.7
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /map
+      Unreliable: false
       Value: true
   Enabled: true
   Global Options:
